@@ -1,6 +1,6 @@
 #include <iostream>
 
-void PlayGame()
+void PrintIntroduction()
 {
     //Print introduction messages to the terminal
     std::cout << "\nYou wake up in a strange place composed entirely of geometric shapes.\n";
@@ -9,7 +9,11 @@ void PlayGame()
     std::cout << "\"I am Hedronax, the Math Lord. You are in The Hyperplane.\"\n";
     std::cout << "\"All that lives here is perfect math. To prove you belong here, I will ask you to solve riddles of math.\"\n";
     std::cout << "\"Answer wrongly, even once, and you will be banished!\"\n\n";
+}
 
+void PlayGame()
+{
+    PrintIntroduction();
     // Declare 3 number code
     const int CodeA = 4;
     const int CodeB = 8;
