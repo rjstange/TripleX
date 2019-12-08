@@ -4,18 +4,21 @@ using namespace std;
 
 int main()
 {
-    const int MaxDifficulty = 5;
-    int LevelDifficulty = 1;
+    // Seeds rand by current time
+    srand(time(NULL));
 
-    while (LevelDifficulty <= MaxDifficulty) // Loop the game until all levels are completed
+    const int MaxLevels = 5;
+    int CurrentLevel = 1;
+
+    while (CurrentLevel <= MaxLevels) // Loop the game until all levels are completed
     {
-        bool bLevelComplete = PlayGame(LevelDifficulty, MaxDifficulty);
+        bool bLevelComplete = PlayGame(CurrentLevel, MaxLevels);
         cin.clear(); // Clears any errors
         cin.ignore(); // Discards the buffer
         
         if (bLevelComplete)
         {
-            ++LevelDifficulty;
+            ++CurrentLevel;
         }
     }
     

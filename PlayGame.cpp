@@ -1,24 +1,26 @@
 #include <iostream>
+#include <ctime>
 #include "PrintIntroduction.cpp"
+#include "PrintRiddle.cpp"
 using namespace std;
 
-bool PlayGame(int Difficulty, int EndGame)
+bool PlayGame(int CurrentLevel, int MaxLevels)
 {
-    PrintIntroduction(Difficulty, EndGame);
+    // Checks for first level to print introduction message
+    if (CurrentLevel == 1)
+    {
+        PrintIntroduction(MaxLevels);
+    }
     
     // Declare 3 number code
-    const int CodeA = 4;
-    const int CodeB = 8;
-    const int CodeC = 16;
+    const int CodeA = rand() % CurrentLevel + CurrentLevel;
+    const int CodeB = rand() % CurrentLevel + CurrentLevel;
+    const int CodeC = rand() % CurrentLevel + CurrentLevel;
 
     const int CodeSum = CodeA + CodeB + CodeC;
     const int CodeProduct = CodeA * CodeB * CodeC;
 
-    // Print sum and product to the terminal
-    cout << "\"Riddle #" << Difficulty << ":\n";
-    cout << "There are three numbers:\n";
-    cout << "They add up to: " << CodeSum << "\n";
-    cout << "And multiply to give: " << CodeProduct << "\"" << endl;
+    PrintRiddle(CurrentLevel, MaxLevels, CodeSum, CodeProduct);
 
     // Store player guesses and receive the input
     int GuessA, GuessB, GuessC;
@@ -28,31 +30,14 @@ bool PlayGame(int Difficulty, int EndGame)
     int GuessSum = GuessA + GuessB + GuessC;
     int GuessProduct = GuessA * GuessB * GuessC;
 
-    // Checks if the game is not on the last level
-    if (Difficulty < EndGame)
-    {
-        if (GuessSum == CodeSum && GuessProduct == CodeProduct)
-            {
-                cout << "\n\"Now for the next riddle.\"\n";
-                return true;
-            }
-        else
-            {
-                cout << "\n\"Pathetic, you are banished from my realm!\"\n";
-                return false;
-            }
-    }
-    // Final level
+    // Evaluate if the input is correct
+    if (GuessSum == CodeSum && GuessProduct == CodeProduct)
+        {
+            return true;
+        }
     else
-    {
-        if (GuessSum == CodeSum && GuessProduct == CodeProduct)
-            {
-                return true;
-            }
-        else
-            {
-                cout << "\n\"Pathetic, you are banished from my realm!\"\n";
-                return false;
-            }
-    }
+        {
+            cout << "\n\"Pathetic, you are banished from my realm!\"\n";
+            return false;
+        }
 }
