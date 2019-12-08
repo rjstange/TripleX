@@ -11,7 +11,7 @@ void PrintIntroduction()
     std::cout << "\"Answer wrongly, even once, and you will be banished!\"\n\n";
 }
 
-void PlayGame()
+bool PlayGame()
 {
     PrintIntroduction();
     // Declare 3 number code
@@ -39,15 +39,24 @@ void PlayGame()
     if (GuessSum == CodeSum && GuessProduct == CodeProduct)
     {
         std::cout << "\n\"Correct! You are worthy to dwell in The Hyperplane!\"\n";
+        return true;
     }
     else
     {
         std::cout << "\n\"Pathetic, you are banished from my realm!\"\n";
+        return false;
     }
 }
 
 int main()
 {
-    PlayGame();
+    while(true)
+    {
+        bool bLevelComplete = PlayGame();
+        PlayGame();
+        std::cin.clear();
+        std::cin.ignore();
+    }
+    
     return 0;
 }
