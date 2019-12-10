@@ -2,7 +2,6 @@
 #include <ctime>
 #include "PrintIntroduction.cpp"
 #include "PrintRiddle.cpp"
-using namespace std;
 
 bool PlayGame(int CurrentLevel, int MaxLevels)
 {
@@ -25,7 +24,7 @@ bool PlayGame(int CurrentLevel, int MaxLevels)
     // Store player guesses and receive the input
     int GuessA, GuessB, GuessC;
     
-    cin >> GuessA >> GuessB >> GuessC;
+    std::cin >> GuessA >> GuessB >> GuessC;
 
     int GuessSum = GuessA + GuessB + GuessC;
     int GuessProduct = GuessA * GuessB * GuessC;
@@ -37,7 +36,7 @@ bool PlayGame(int CurrentLevel, int MaxLevels)
         }
     else
         {
-            cout << "\n\"Pathetic, you are banished from my realm!\"\n";
+            std::cout << "\n\"Pathetic, you are banished from my realm!\"\n";
             return false;
         }
 }

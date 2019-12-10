@@ -1,6 +1,5 @@
 #include <iostream>
 #include "PlayGame.cpp"
-using namespace std;
 
 int main()
 {
@@ -13,8 +12,8 @@ int main()
     while (CurrentLevel <= MaxLevels) // Loop the game until all levels are completed
     {
         bool bLevelComplete = PlayGame(CurrentLevel, MaxLevels);
-        cin.clear(); // Clears any errors
-        cin.ignore(); // Discards the buffer
+        std::cin.clear(); // Clears any errors
+        std::cin.ignore(); // Discards the buffer
         
         if (bLevelComplete)
         {
@@ -22,8 +21,8 @@ int main()
         }
     }
     
-    cout << "\n\"You have answered all of my the riddles; proving yourself worthy to dwell in my presence!\"\n";
-    cout << "\nTHE END\n";
+    std::cout << "\n\"You have answered all of my the riddles; proving yourself worthy to dwell in my presence!\"\n";
+    std::cout << "\nTHE END\n";
     
     return 0;
 }
